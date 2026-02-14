@@ -73,3 +73,29 @@ print(dw)
 ```
 
 => Based on this result, assumption 2 is satisfied.
+
+**Assumption 3: There is No Multicollinearity Among Explanatory Variables**
+
+I use the VIF (Variance Inflation Factor) test to check whether any features have a VIF score higher than 5.
+
+```python
+# VIF test result
+Variable        VIF
+0         const  45.019332
+1           AST   1.176121
+2            HF   1.193377
+3           HST   1.328959
+4            AF   1.231856
+5            HC   1.250440
+6            AC   1.282166
+7            HY   1.264185
+8            AY   1.235652
+9            HR   1.029591
+10           AR   1.024371
+11  home_lead_1   1.091098
+
+```
+=> Since all features have VIF scores around 1, assumption 3 is satisfied.
+
+
+
