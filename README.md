@@ -99,3 +99,10 @@ Variable        VIF
 
 **Assumption 4: There are No Extreme Outliers**
 
+This is the most challenging part of the analysis so far. To identify influential points, I calculate the Cook's distance for each sample in the dataset. Typically, any points that exceed the threshold (4/n) are considered influential.
+
+<p align="center">
+  <img src="Images/Cook.png" alt="Cook" width="500">
+</p
+
+However, this dataset is imbalanced. Matches where the away team makes a comeback are rare events. Out of 1,825 matches, only 110 involve a successful away comeback. As a result, when calculating Cook's distance, all points with `away_comeback` = 1 tend to be flagged as outliers. These points are not data errors, they are genuine events. Removing them would only bias the model. I will keep all of these observations and accept that the coefficients may fluctuate substantially.
