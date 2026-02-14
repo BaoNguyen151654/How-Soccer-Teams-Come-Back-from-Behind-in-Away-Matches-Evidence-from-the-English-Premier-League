@@ -97,5 +97,5 @@ Variable        VIF
 ```
 => Since all features have VIF scores around 1, assumption 3 is satisfied.
 
-
+**Assumption 4: There are No Extreme Outliers**
 
