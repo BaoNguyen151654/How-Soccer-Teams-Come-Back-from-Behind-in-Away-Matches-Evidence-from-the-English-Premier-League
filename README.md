@@ -1,6 +1,6 @@
 # How Soccer Teams Come Back from Behind in Away Matches: Evidence from the English Premier League
 
-## 1/ Project Overview:
+## 1/ Project overview:
 Playing away matches is never easy, as players must perform under the pressure of thousands of spectators. The challenge becomes even greater when away teams fall behind on the scoreboard. However, making a comeback in away matches is not impossible, as many matches have shown away teams overturning deficits under hostile conditions. A notable example is Manchester United’s 3–2 victory over Manchester City at the Etihad Stadium in 2018, despite trailing by two goals at halftime.
 
 <p align="center">
@@ -21,5 +21,33 @@ The analysis focuses on English Premier League matches from **2011 to 2025**.
 
 The full dataset can be accessed here: [English Premier League Dataset](https://datahub.io/core/english-premier-league)
 
+## 2/ How I define a comeback:
 
+In this project, a comeback is defined as a match where the away team is trailing at halftime but somehow manages to win in the end.
+
+**Limitation:** By defining a comeback this way, matches where the away team is trailing only in the second half and manages to come back would not be counted. However, since this dataset does not include any features for the second half, this is the only feasible definition.
+
+## 3/ What factors are associated with the away team's chances of making a comeback?
+
+To address this question, I will try to interpret the coefficients of a logistic regression model. However, to ensure that the results are reliable, I can only perform the interpretation if the model satisfies all six assumptions below:
+
+- The Response Variable is Binary
+- The Observations are Independent
+- There is No Multicollinearity Among Explanatory Variables
+- There are No Extreme Outliers
+- There is a Linear Relationship Between Explanatory Variables and the Logit of the Response Variable
+- The Sample Size is Sufficiently Large
+
+The features selected for interpretation are: `AST` (Away Shots on Target), `HF` (Home Fouls), `HST` (Home Shots on Target), `AF` (Away Fouls), `HC` (Home Corners), `AC` (Away Corners), `HY` (Home Yellow Cards), `AY` (Away Yellow Cards), `HR` (Home Red Cards), and `AR` (Away Red Cards), `home_lead_1` (The number of goals by which the home team is leading at halftime). The Target variable is `away_comeback` (1 if the away team makes a comeback, 0 otherwise)
+
+```python
+# Code
+model = smf.logit(
+    'away_comeback ~ AST+HF+HST+AF+HC+AC+HY+AY+HR+AR+home_lead_1',
+    data=df1
+).fit()
+
+```
+
+The Target variable is `away_comeback`: 1 if the away team makes a comeback, 0 otherwise
 
