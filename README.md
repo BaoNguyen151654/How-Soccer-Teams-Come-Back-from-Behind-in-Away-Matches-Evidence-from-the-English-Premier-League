@@ -49,5 +49,27 @@ model = smf.logit(
 
 ```
 
-The Target variable is `away_comeback`: 1 if the away team makes a comeback, 0 otherwise
+First, I fit a logistic regression model using all these variables. This model is only used to calculate the residuals.
 
+**Assumption 1: The Response Variable is Binary**
+
+Since the target feature `away_comeback` is binary, this assumption is satisfied.
+
+**Assumption 2: The Observations are Independent**
+
+To check this assumption, I use the Durbin-Watson test. If the result is approximately 2, it means there is no autocorrelation and the assumption is satisfied.
+
+```python
+# Code
+dw = durbin_watson(model.resid_dev)
+print(dw)
+
+```
+
+```python
+# Output
+1.9263494659755964
+
+```
+
+=> Based on this result, assumption 2 is satisfied.
