@@ -257,6 +257,46 @@ The results of the model indicate that four variables are statistically signific
 - `HST` (Home shot on target): Each additional shot on target by the home team reduces the probability of a successful comeback for the away team by 24.09%. A higher number of shots on target indicates that the home team continues to press offensively after taking the lead, which may result in scoring even more goals in the second half. This factor is the most strongly associated with an away team comeback.
 - `log_AST` (Away shot on target): When the away team increases its shots on target, the probability of a comeback increases a little, around 0.08 percentage points per 1% increase, on average. The first few shots on target by the away team have a larger impact on the probability of a comeback than later ones, such as the 10th or 11th. This makes sense: early shots indicate that the team is beginning to shift its playing style and gain momentum. In contrast, a large number of shots later in the game may reflect a persistent but ineffective attack rather than a good change in strategy.
 
+## 4/ How can the away team make a comeback, and what are the most common comeback scenarios?
 
+To answer this question, I cluster the data based on the playing styles of both teams. The team’s playing style is represented by four features: `home_attack`, `away_attack`, `home_aggressive`, and `away_aggressive`.
 
+- `home_attack`: Total z-scores of the features associated with home team attacking:
+<p align="center">
+  <img src="Images/equation.svg" alt="Clustered Variance">
+</p>
+
+- `away_attack`: Total z-scores of the features associated with away team attacking:
+<p align="center">
+  <img src="Images/equation (1).svg" alt="Clustered Variance">
+</p>
+
+- `home_aggressive`: Total z-scores of the features associated with home team aggressiveness:
+<p align="center">
+  <img src="Images/equation (2).svg" alt="Clustered Variance">
+</p>
+
+- `away_aggressive`: Total z-scores of the features associated with away team aggressiveness:
+<p align="center">
+  <img src="Images/equation (3).svg" alt="Clustered Variance">
+</p>
+
+After defining all features, the next step is to implement the K-means algorithm with a specific k value. The optimal k (from 2 to 10) can be found by running multiple models, each model is evaluated using three metrics: Silhouette score, Davies–Bouldin index, and Calinski–Harabasz index.
+
+<p align="center">
+  <img src="Images/kmean.png" alt="Clustered Variance">
+</p>
+
+**=> The results show that k = 2 is the optimal number of clusters.**
+
+### Cluster Profiles Summary
+
+| Cluster | Samples | Home Attack (Mean) | Away Attack (Mean) | Home Aggressive (Mean) | Away Aggressive (Mean) |
+| :---: | :---: | :---: | :---: | :---: | :---: |
+| **0** | 25 | -0.7462 | 1.0519 | 5.4575 | 0.5364 |
+| **1** | 85 | -0.8935 | 1.3025 | -0.2136 | -0.1127 |
+  
+
+    
+  
 
