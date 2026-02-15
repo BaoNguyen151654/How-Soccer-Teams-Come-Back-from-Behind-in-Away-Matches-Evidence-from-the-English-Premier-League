@@ -27,6 +27,8 @@ In this project, a comeback is defined as a match where the away team is trailin
 
 **Limitation:** By defining a comeback this way, matches where the away team is trailing only in the second half and manages to come back would not be counted. However, since this dataset does not include any features for the second half, this is the only feasible definition.
 
+Additionally, I added a new feature to the model `home_lead_1` (The number of goals by which the away team is trailing at the end of the first half). It is important to mention this because, if the dataset is not properly filtered, this variable can create a causality paradox. Specifically, if the home team does not lead at all in the first half, `home_lead_1` is 0, and by definition, a comeback is impossible. Otherwise, it would appear that the more the away team is trailing, the higher the chance of a comeback. **=> Only keep samples where `home_lead_1` > =1.**
+
 ## 3/ What factors are associated with the away team's chances of making a comeback?
 
 To address this question, I will try to interpret the coefficients of a logistic regression model. However, to ensure that the results are reliable, I can only perform the interpretation if the model satisfies all six assumptions below:
