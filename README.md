@@ -250,6 +250,9 @@ The results of the model indicate that four variables are statistically signific
 
 **Conclusion:**
 
+- `home_lead_1`(Number of goals the away team is trailing by in the first half): Each time the opponent scores an additional goal in the first half, the probability of a successful comeback decreases by 7.92%. This is quite reasonable, as the more goals a team is trailing by, the lower its likelihood of making a comeback.
+- `HR` (Home red cards) : Each additional red card received by the opponent increases the probability of a successful comeback for the away team by 5.40%. In football, receiving an extra red card means playing with fewer players, which gives the away team a substantial advantage.
+- `HST` (Home shot on target) : Each additional shot on target by the home team reduces the probability of a successful comeback for the away team by 24.09%. A higher number of shots on target indicates that the home team continues to press offensively after taking the lead, which may result in scoring even more goals in the second half. This factor is the most strongly associated with an away team comeback.
 
 
 
