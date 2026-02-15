@@ -185,9 +185,70 @@ After checking all assumptions, I will fit a logistic regression model with clus
 **-Utilize log(AST) as the predictor:** Because `AST` does not have a linear relationship with the log-odds of the target, I apply a logarithmic transformation to it to improve linearity.
 
 <p align="center">
-  <img src="Images/CodeCogsEqn (3).svg" alt="Clustered Variance">
+  <img src="Images/Model.svg" alt="Clustered Variance">
 </p>
 
+```python
+# Result: Coef
+                           Logit Regression Results                           
+==============================================================================
+Dep. Variable:          away_comeback   No. Observations:                 1825
+Model:                          Logit   Df Residuals:                     1807
+Method:                           MLE   Df Model:                           17
+Date:                Sun, 15 Feb 2026   Pseudo R-squ.:                  0.2354
+Time:                        03:03:23   Log-Likelihood:                -317.76
+converged:                       True   LL-Null:                       -415.59
+Covariance Type:              cluster   LLR p-value:                 2.137e-32
+===============================================================================
+                  coef    std err          z      P>|z|      [0.025      0.975]
+-------------------------------------------------------------------------------
+Intercept      -5.2759      2.714     -1.944      0.052     -10.595       0.043
+AST             1.9412      0.552      3.514      0.000       0.859       3.024
+AST_log        -0.5942      0.203     -2.929      0.003      -0.992      -0.197
+HST            -0.2347      0.322     -0.730      0.465      -0.865       0.396
+HST_log        -0.0027      0.122     -0.022      0.982      -0.242       0.236
+HF              0.6049      0.538      1.123      0.261      -0.450       1.660
+HF_log         -0.1856      0.159     -1.167      0.243      -0.497       0.126
+AF             -0.3918      0.558     -0.702      0.483      -1.485       0.702
+AF_log          0.1015      0.163      0.622      0.534      -0.219       0.422
+HC              0.5635      0.289      1.952      0.051      -0.002       1.129
+HC_log         -0.2061      0.105     -1.956      0.051      -0.413       0.000
+AC             -0.1768      0.277     -0.638      0.524      -0.720       0.367
+AC_log          0.0540      0.092      0.589      0.556      -0.126       0.234
+HY              0.0807      0.090      0.893      0.372      -0.096       0.258
+AY              0.1837      0.109      1.684      0.092      -0.030       0.397
+HR              1.1085      0.318      3.482      0.000       0.485       1.732
+AR             -0.5693      0.373     -1.525      0.127      -1.301       0.163
+home_lead_1    -1.6341      0.541     -3.020      0.003      -2.695      -0.574
+===============================================================================
+```
+```python
+# Result: Marginal Effect
+        Logit Marginal Effects       
+=====================================
+Dep. Variable:          away_comeback
+Method:                          dydx
+At:                           overall
+===============================================================================
+                 dy/dx    std err          z      P>|z|      [0.025      0.975]
+-------------------------------------------------------------------------------
+log_AST         0.0826      0.013      6.238      0.000       0.057       0.109
+HST            -0.0117      0.002     -5.370      0.000      -0.016      -0.007
+HF             -0.0011      0.001     -1.115      0.265      -0.003       0.001
+AF             -0.0025      0.001     -1.678      0.093      -0.005       0.000
+AC             -0.0015      0.002     -0.973      0.331      -0.004       0.002
+HC              0.0009      0.002      0.392      0.695      -0.004       0.005
+HY              0.0039      0.005      0.867      0.386      -0.005       0.013
+AY              0.0086      0.005      1.571      0.116      -0.002       0.019
+HR              0.0540      0.014      3.767      0.000       0.026       0.082
+AR             -0.0281      0.019     -1.468      0.142      -0.066       0.009
+home_lead_1    -0.0792      0.023     -3.381      0.001      -0.125      -0.033
+===============================================================================
+```
+The results of the model indicate that four variables are statistically significant (p-value < 0.05), both in terms of their coefficients and marginal effects:
+`log_AST`, `HST`, `HR`, `home_lead_1`
+
+**Conclusion:**
 
 
 
