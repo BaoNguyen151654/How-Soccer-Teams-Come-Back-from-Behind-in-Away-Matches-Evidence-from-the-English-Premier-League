@@ -338,3 +338,10 @@ After defining all features, the next step is to implement the K-means algorithm
 | 29 | Leeds | 2 | 1 |
 
 </div>
+
+- Since 2011, 29 Premier League teams have managed at least one away comeback, with Chelsea leading the pack with 12 matches. Unsurprisingly, most of the top teams are from the "Big Six" (Liverpool, Manchester United, etc.), highlighting that successful comebacks are not only situational but also influenced by the club’s overall quality and financial strength.
+- Wolves are an interesting exception, as they are not traditionally a top-tier team, yet they have recorded nine successful away comebacks. Most of these comebacks fall into Cluster 2, which also highlights the team’s effective counter-attacking style.
+
+## 5/ Conclusion:
+- To make a comeback, the away team needs to leverage two key factors: increasing their attacking intensity and capitalizing on the opponent’s mistakes (e.g., red cards or fouls).
+- If the away team cannot apply high pressure, they should adopt a cautious approach and minimize unnecessary fouls, which can also increase their chances of making a comeback.
