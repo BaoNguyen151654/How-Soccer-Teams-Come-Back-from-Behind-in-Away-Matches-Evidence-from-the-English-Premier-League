@@ -279,28 +279,25 @@ To answer this question, I cluster the data based on the playing styles of both 
   <img src="Images/equation (3).svg" alt="Clustered Variance">
 </p>
 
-After defining all features, the next step is to implement the K-means algorithm with a specific k value. The optimal k (from 2 to 10) can be found by running multiple models, each model is evaluated using 2 metrics: Silhouette score and Calinski–Harabasz index.
+After defining all features, the next step is to implement the K-means algorithm with a specific k value. The optimal k (from 1 to 10) can be identified based on the elbow method.
 
 <p align="center">
-  <img src="Images/kmean.png" alt="Clustered Variance">
+  <img src="Images/ELBOW.png" alt="Clustered Variance">
 </p>
 
-The optimal k is the value that achieves a trade-off between cohesion and segmentation. According to the Elbow Method, it is identified at the point where increasing k yields diminishing returns in terms of the evaluation metric **=> k = 4**
+**=> The Elbow Method suggests k=3 as the optimal number of clusters. At this point, the WCSS shows a clear inflection point, where the rate of decrease significantly slows down.**
 
 **Cluster Profiles Summary**
 
-| Cluster | n_samples | home_attack_mean | away_attack_mean | home_aggressive_mean | away_aggressive_mean | away_comeback_count |
-|---------|-----------|-----------------|-----------------|--------------------|--------------------|-------------------|
-| 0       | 20        | -0.370381       | 0.050921        | -0.310505          | 2.153136           | 20                |
-| 1       | 7         | 0.846039        | -0.671631       | -1.173506          | -0.427091          | 7                 |
-| 2       | 53        | -1.368646       | 2.086789        | -0.261357          | -0.979586          | 53                |
-| 3       | 30        | -0.685883       | 1.003074        | 4.885250           | 0.522575           | 30                |
+| Cluster | n_samples | home_attack_mean | away_attack_mean | home_aggressive_mean | away_aggressive_mean | away_comeback_rate (%) |
+|---------|-----------|-----------------|-----------------|--------------------|--------------------|----------------------|
+| 0       | 483       | -0.001495       | -0.365027       | -0.134240          | 2.406733           | 1.10                 |
+| 1       | 837       | 0.600539        | -0.505926       | -1.146878          | -1.187936          | 1.42                 |
+| 2       | 505       | -0.993918       | 1.187660        | 2.029258           | -0.332970          | 3.51                 |
 
+**- The Deadlocked Aggressors (Cluster 0):** In these matches, the away team commits frequent fouls, as shown by the highest `away_aggressive`. This high aggression increases the risk of receiving red cards, which hinders the away team's ability to recover. Consequently, this group has the lowest comeback rate of only 1.1%, even when the home team shows a lack of attacking options (`home_attack` < 0).
 
-
-**- Comeback by utilizing home team's disadvantages (Cluster 0):** A high `home_aggressive` indicates that the home team in these matches commits a lot of fouls, which may lead to red cards and force them to play with fewer players. The away team may capitalize on this advantage to make a comeback. 
-
-**- Comeback thanks to dominant attacking play (Cluster 1):**
+**- The Controlled Underdogs (Cluster 1):** In these matches, the away team maintains high composure (lowest `away_aggressive`). However, the main challenge comes from the home team’s strong performance (`highest home_attack`) and their ability to control the game (lowest `home_aggressive`). As a result, the away team’s comeback rate is only slightly higher than in Cluster 0 (1.42%).
   
 
     
