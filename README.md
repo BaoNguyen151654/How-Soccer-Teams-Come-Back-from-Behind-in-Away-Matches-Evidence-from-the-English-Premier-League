@@ -287,7 +287,7 @@ After defining all features, the next step is to implement the K-means algorithm
   <img src="Images/kmean.png" alt="Clustered Variance">
 </p>
 
-**=> The results show that k = 2 is the optimal number of clusters.**
+**=> All three clustering evaluation metrics drop sharply after k = 2, indicating that that the underlying playing styles in the dataset are naturally grouped into two distinct clusters.The results show that k = 2 is the optimal number of clusters.**
 
 **Cluster Profiles Summary**
 
@@ -296,7 +296,7 @@ After defining all features, the next step is to implement the K-means algorithm
 | **0** | 25 | -0.7462 | 1.0519 | 5.4575 | 0.5364 |
 | **1** | 85 | -0.8935 | 1.3025 | -0.2136 | -0.1127 |
 
-**- Comeback by utilizing home team's disadvantages (Cluster 0):**
+**- Comeback by utilizing home team's disadvantages (Cluster 0):** 
 
 **- Comeback thanks to dominant attacking play (Cluster 1):**
   
