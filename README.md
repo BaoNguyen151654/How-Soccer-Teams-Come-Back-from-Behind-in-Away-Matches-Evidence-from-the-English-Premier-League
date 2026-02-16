@@ -178,11 +178,9 @@ After checking all assumptions, I will fit a logistic regression model with clus
   <img src="Images/CodeCogsEqn.svg" alt="Clustered Variance">
 </p>
 
-<p align="center">
-  <strong>V_cluster</strong> : The robust estimate of the variance-covariance matrix of the model coefficients.<br>
-  <strong>A</strong> : The Hessian matrix or the Expected Information Matrix.<br>
-  <strong>B</strong> : The Outer Product of Gradients or the Score Variance Matrix.
-</p>
+- V_cluster: The robust estimate of the variance-covariance matrix of the model coefficients.<br>
+- A: The Hessian matrix or the Expected Information Matrix.<br>
+- B: The Outer Product of Gradients or the Score Variance Matrix.
 
 **-Utilize log(AST) as the predictor:** Because `AST` does not have a linear relationship with the log-odds of the target, I apply a logarithmic transformation to it to improve linearity.
 
@@ -281,13 +279,13 @@ To answer this question, I cluster the data based on the playing styles of both 
   <img src="Images/equation (3).svg" alt="Clustered Variance">
 </p>
 
-After defining all features, the next step is to implement the K-means algorithm with a specific k value. The optimal k (from 2 to 10) can be found by running multiple models, each model is evaluated using three metrics: Silhouette score, Davies–Bouldin index, and Calinski–Harabasz index.
+After defining all features, the next step is to implement the K-means algorithm with a specific k value. The optimal k (from 2 to 10) can be found by running multiple models, each model is evaluated using 2 metrics: Silhouette score and Calinski–Harabasz index.
 
 <p align="center">
-  <img src="Images/kmean.png" alt="Clustered Variance">
+  <img src="Images/cluster.png" alt="Clustered Variance">
 </p>
 
-**=> All three clustering evaluation metrics drop sharply after k = 2, indicating that that the underlying playing styles in the dataset are naturally grouped into two distinct clusters.The results show that k = 2 is the optimal number of clusters.**
+The optimal k is the value that achieves a trade-off between cohesion and segmentation. According to the Elbow Method, it is identified at the point where increasing k yields diminishing returns in terms of the evaluation metric **=> k = 4**
 
 **Cluster Profiles Summary**
 
@@ -296,7 +294,7 @@ After defining all features, the next step is to implement the K-means algorithm
 | **0** | 25 | -0.7462 | 1.0519 | 5.4575 | 0.5364 |
 | **1** | 85 | -0.8935 | 1.3025 | -0.2136 | -0.1127 |
 
-**- Comeback by utilizing home team's disadvantages (Cluster 0):** 
+**- Comeback by utilizing home team's disadvantages (Cluster 0):** A high `home_aggressive` indicates that the home team in these matches commits a lot of fouls, which may lead to red cards and force them to play with fewer players. The away team may capitalize on this advantage to make a comeback. 
 
 **- Comeback thanks to dominant attacking play (Cluster 1):**
   
