@@ -289,12 +289,16 @@ After defining all features, the next step is to implement the K-means algorithm
 
 **=> The results show that k = 2 is the optimal number of clusters.**
 
-### Cluster Profiles Summary
+**Cluster Profiles Summary**
 
 | Cluster | Samples | Home Attack (Mean) | Away Attack (Mean) | Home Aggressive (Mean) | Away Aggressive (Mean) |
 | :---: | :---: | :---: | :---: | :---: | :---: |
 | **0** | 25 | -0.7462 | 1.0519 | 5.4575 | 0.5364 |
 | **1** | 85 | -0.8935 | 1.3025 | -0.2136 | -0.1127 |
+
+**- Comeback by utilizing home team's disadvantages (Cluster 0):**
+
+**- Comeback thanks to dominant attacking play (Cluster 1):**
   
 
     
